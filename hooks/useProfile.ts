@@ -35,7 +35,7 @@ export function useProfile(): UseProfileReturn {
 
     try {
       await axios.patch(
-        "http://localhost:5001/api/auth/profile",
+        "https://appointment-system-user-service.vercel.app/api/auth/profile",
         {
           name: data.name !== user?.name ? data.name : undefined,
           currentPassword: data.currentPassword || undefined,

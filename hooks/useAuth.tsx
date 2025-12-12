@@ -42,9 +42,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const checkAuth = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/auth/me", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "https://appointment-system-user-service.vercel.app/api/auth/me",
+        {
+          withCredentials: true,
+        }
+      );
       setUser(res.data.user);
       return res.data.user;
     } catch {
@@ -64,7 +67,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
     try {
       const res = await axios.post(
-        "http://localhost:5001/api/auth/login",
+        "https://appointment-system-user-service.vercel.app/api/auth/login",
         { email: email.toLowerCase(), password },
         { withCredentials: true }
       );
@@ -88,7 +91,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setError(null);
     try {
       const res = await axios.post(
-        "http://localhost:5001/api/auth/register",
+        "https://appointment-system-user-service.vercel.app/api/auth/register",
         { name, email: email.toLowerCase(), password, role },
         { withCredentials: true }
       );
@@ -105,7 +108,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = async () => {
     try {
       await axios.post(
-        "http://localhost:5001/api/auth/logout",
+        "https://appointment-system-user-service.vercel.app/api/auth/logout",
         {},
         { withCredentials: true }
       );

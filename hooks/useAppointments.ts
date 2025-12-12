@@ -51,9 +51,12 @@ export function useAppointments(userId?: string | null) {
   const getDoctors = async () => {
     setLoadingDoctors(true);
     try {
-      const res = await axios.get("http://localhost:5001/api/auth/doctors", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "https://appointment-system-user-service.vercel.app/api/auth/doctors",
+        {
+          withCredentials: true,
+        }
+      );
       setDoctors(res.data.doctors);
     } catch (err: any) {
       setError(err.response?.data?.error || "Failed to fetch doctors");
